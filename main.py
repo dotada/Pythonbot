@@ -1,6 +1,7 @@
 import os
 import keep_alive
 import random
+import discord
 from discord.ext import commands
 
 bot = commands.Bot(command_prefix=';')
@@ -23,6 +24,10 @@ async def ea(message):
      await message.attachments[0].save(fp="files/{}".format(filename))
    if filename.endswith(".jpeg"):
      await message.attachments[0].save(fp="files/{}".format(filename))       
+
+@bot.command()
+async def rickroll(ctx):
+  await ctx.send("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 
 @bot.command()
 async def naix(ctx):
@@ -101,5 +106,14 @@ async def nh(ctx):
   o = str(g)
   url4 = "https://nhentai.to/g/" + o
   await ctx.send(url4)
+
+@bot.command()
+async def tf(ctx):
+  await ctx.send("https://cdn.discordapp.com/emojis/804496731529281563.png?v=1")
+
+@bot.command()
+async def cunt(ctx):
+  await ctx.send(file=discord.File("cunt.mp3"))
+
 keep_alive.keep_alive()
 bot.run(TOKEN)
