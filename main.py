@@ -3,6 +3,7 @@ import keep_alive
 import random
 import discord
 from discord.ext import commands
+from discord.ext import tasks
 
 bot = commands.Bot(command_prefix=';')
 TOKEN = os.environ['TOKEN']
@@ -32,6 +33,17 @@ async def rickroll(ctx):
 @bot.command()
 async def naix(ctx):
  await ctx.send("gg wp")
+
+@bot.command()
+async def pee(ctx):
+ await ctx.send("""              
+               |\
+        /    /\/o\_
+       (.-.__.(   __o
+    /\_(      .----'
+     .' \____/
+    /   /  / \
+___:____\__\__\__________________VK""")
 
 @bot.command()
 async def test(ctx):
@@ -108,12 +120,37 @@ async def nh(ctx):
   await ctx.send(url4)
 
 @bot.command()
+async def m(ctx):
+ await ctx.send("Plamen e  mango")
+
+@bot.command()
 async def tf(ctx):
   await ctx.send("https://cdn.discordapp.com/emojis/804496731529281563.png?v=1")
 
 @bot.command()
 async def cunt(ctx):
   await ctx.send(file=discord.File("cunt.mp3"))
+
+@bot.command()
+async def deeba(ctx):
+ await ctx.send("deeba ti mama ta")
+
+@bot.command()
+async def hambur4o(ctx):
+ await ctx.send("Абонирайте се за Hambur4o в YouTube.")
+
+channel1 =  bot.get_channel(753364914030247938)
+
+@tasks.loop(seconds=30)
+async def send():
+ channel2 = bot.get_channel(892336555975376906)  
+ await channel2.send(file=discord.File("mango.jpg"))  
+
+@send.before_loop
+async def before():
+  await bot.wait_until_ready()
+
+send.start()
 
 keep_alive.keep_alive()
 bot.run(TOKEN)
